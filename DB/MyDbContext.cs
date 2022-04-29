@@ -7,13 +7,10 @@ namespace CRUD.DB
     {
         public DbSet<Tank> Tanks { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public MyDbContext(DbContextOptions<MyDbContext> options)
+        : base(options)
         {
-            var connectionStringBuilder = new SqliteConnectionStringBuilder { DataSource = "MyDb.db" };
-            var connectionString = connectionStringBuilder.ToString();
-            var connection = new SqliteConnection(connectionString);
-
-            optionsBuilder.UseSqlite(connection);
         }
+
     }
 }

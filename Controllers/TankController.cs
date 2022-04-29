@@ -8,7 +8,12 @@ namespace CRUD.Controllers
     [Route("api/[controller]")]
     public class TankController : Controller
     {
-        private MyDbContext db = new MyDbContext();
+        private readonly MyDbContext db;
+
+        public TankController(MyDbContext context)
+        {
+            db = context;
+        }
 
         // GET: TankController
         [HttpGet(Name = "GetTankIndex")]
